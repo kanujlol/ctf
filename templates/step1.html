@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 1: Steganography Extraction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="content">
+        <h2>Step 1: Steganography Extraction</h2>
+        <p>Do you really think I'm your enemy, Sherlock? I'm not. See who I am.</p>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="image1">Upload Image 1 (JPG):</label>
+            <input type="file" name="image1" accept=".jpg, .jpeg" required><br><br>
+            <label for="image2">Upload Image 2 (PNG):</label>
+            <input type="file" name="image2" accept=".png" required><br><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if image1_path %}
+        <h3>Uploaded Image 1 (JPG):</h3>
+        <img src="{{ url_for('static', filename='dpsetg.jpg') }}" alt="Uploaded Image 1" width="300"><br><br>
+        {% endif %}
+
+        {% if image2_path %}
+        <h3>Uploaded Image 2 (PNG):</h3>
+        <img src="{{ url_for('static', filename='download.png') }}" alt="Uploaded Image 2" width="300"><br><br>
+        {% endif %}
+    </div>
+</body>
+</html>
