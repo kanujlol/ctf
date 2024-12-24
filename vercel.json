@@ -14,5 +14,10 @@
   ],
   "env": {
     "PYTHON_VERSION": "3.9"
+  },
+  "functions": {
+    "app.py": {
+      "runtime": "python3.9"
+    }
   }
 }
