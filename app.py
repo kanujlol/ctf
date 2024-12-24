@@ -16,9 +16,9 @@ def step6():
         image1 = request.files.get('image1')
         image2 = request.files.get('image2')
         
-        # Save the files temporarily
-        image1_path = 'static/' + image1.filename
-        image2_path = 'static/' + image2.filename
+        # Save the files temporarily with fixed names
+        image1_path = 'static/dpsetg.jpg'  # Saving as dpsetg.jpg
+        image2_path = 'static/download.png'  # Saving as download.png
         
         image1.save(image1_path)
         image2.save(image2_path)
@@ -36,7 +36,8 @@ def step6():
         if combined_message.strip().lower() == expected_answer:
             return redirect(url_for('final'))  # Redirect to final step if correct
         else:
-            return render_template('step6.html', error="Incorrect message. Try again.")
+            return render_template('step6.html', error="Incorrect message. Try again.", 
+                                   image1_path=image1_path, image2_path=image2_path)
     
     return render_template('step6.html')
 
