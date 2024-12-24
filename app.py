@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from stegano import lsb
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 # Helper function to decode the steganography message from an image file
 def decode_image(file_path):
