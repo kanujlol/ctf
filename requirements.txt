@@ -1,2 +1,2 @@
 Flask==2.2.3
-stegano==1.0.0
+stegano==0.10.0
