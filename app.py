@@ -1,16 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for
 from stegano import lsb
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
+app = Flask(__name__)
 
 # Helper function to decode the steganography message from an image file
 def decode_image(file_path):
     message = lsb.reveal(file_path)
     return message
 
-# Step 6: Steganography Extraction Page
-@app.route('/step6', methods=['GET', 'POST'])
-def step6():
+# Step 1: Steganography Extraction Page
+@app.route('/step1', methods=['GET', 'POST'])
+def step1():
     if request.method == 'POST':
         # Get the uploaded files
         image1 = request.files.get('image1')
@@ -36,10 +36,10 @@ def step6():
         if combined_message.strip().lower() == expected_answer:
             return redirect(url_for('final'))  # Redirect to final step if correct
         else:
-            return render_template('step6.html', error="Incorrect message. Try again.", 
+            return render_template('step1.html', error="Incorrect message. Try again.", 
                                    image1_path=image1_path, image2_path=image2_path)
     
-    return render_template('step6.html')
+    return render_template('step1.html')
 
 # Final Page: Reveal the Flag
 @app.route('/final', methods=['GET'])
